@@ -1,0 +1,579 @@
+
+<style>
+      .creature-table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .creature-table th,
+      .creature-table td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .creature-table th {
+        background-color: #f2f2f2;
+      }
+
+      .creature-table img {
+        max-width: 100px;
+        max-height: 100px;
+        transition: transform 0.3s ease-in-out;
+        border-radius: 50%;
+        overflow: hidden;
+      }  
+
+      .creature-table img:hover {
+        animation: bounce-shake-spin 1s infinite;
+      }
+
+      @keyframes bounce-shake-spin {
+        0%, 20%, 50%, 80%, 100% {
+          transform: translateY(0) rotate(0) translateX(0);
+        }
+        40% {
+          transform: translateY(-10px) rotate(-5deg) translateX(-5px);
+        }
+        60% {
+          transform: translateY(-5px) rotate(5deg) translateX(5px);
+        }
+      }
+    /* Hover effects based on attribute */
+      .creature-table td[data-attribute="ELECTRIC"] img:hover {
+        animation: electric-animation 1s infinite;
+      }
+
+      .creature-table td[data-attribute="FIRE"] img:hover {
+        animation: fire-animation 1s infinite;
+      }
+
+      .creature-table td[data-attribute="GRASS"] img:hover {
+        animation: grass-animation 0.5s infinite;
+      }
+
+      .creature-table td[data-attribute="WATER"] img:hover {
+        animation: water-animation 1s infinite;
+      }
+
+      .creature-table td[data-attribute="ICE"] img:hover {
+        animation: ice-animation 1s infinite;
+      }
+
+      .creature-table td[data-attribute="FIGHTING"] img:hover {
+        animation: fighting-animation 0.5s infinite;
+      }
+
+      .creature-table td[data-attribute="POISON"] img:hover {
+        animation: poison-animation 2s infinite;
+      }
+
+      .creature-table td[data-attribute="GROUND"] img:hover {
+        animation: ground-animation 1s infinite;
+      }
+
+      .creature-table td[data-attribute="FLYING"] img:hover {
+        animation: flying-animation 2s infinite;
+      }
+
+      .creature-table td[data-attribute="PSYCHIC"] img:hover {
+        animation: psychic-animation 3s infinite;
+      }
+
+      .creature-table td[data-attribute="BUG"] img:hover {
+        animation: bug-animation 1s infinite;
+      }
+
+      .creature-table td[data-attribute="ROCK"] img:hover {
+        animation: rock-animation 1s infinite;
+      }
+
+      .creature-table td[data-attribute="GHOST"] img:hover {
+        animation: ghost-animation 3s infinite;
+      }
+
+      .creature-table td[data-attribute="DARK"] img:hover {
+        animation: dark-animation 2s infinite;
+      }
+
+      .creature-table td[data-attribute="DRAGON"] img:hover {
+        animation: dragon-animation 3s infinite;
+      }
+
+      .creature-table td[data-attribute="STEEL"] img:hover {
+        animation: steel-animation 2s infinite;
+      }
+
+      .creature-table td[data-attribute="FAIRY"] img:hover {
+        animation: fairy-animation 4s infinite;
+      }
+
+      .creature-table td[data-attribute="FRESH"] img:hover {
+        filter: brightness(120%);
+      }
+
+      .creature-table td[data-attribute="IN TRAINING"] img:hover,
+      .creature-table td[data-attribute="ROOKIE"] img:hover,
+      .creature-table td[data-attribute="CHAMPION"] img:hover,
+      .creature-table td[data-attribute="ULTIMATE"] img:hover,
+      .creature-table td[data-attribute="ARMOR"] img:hover {
+        animation: evolve-animation 1s infinite;
+      }
+
+      .creature-table td[data-attribute="MEGA"] img:hover {
+        animation: mega-animation 4s infinite;
+      }
+
+      /* Define keyframe animations for specific attributes */
+
+      @keyframes flying-animation {
+        0% {
+          transform: translateX(0) translateY(0) rotate(0);
+        }
+        25% {
+          transform: translateX(200px) translateY(-100px) rotate(45deg);
+        }
+        50% {
+          transform: translateX(400px) translateY(0) rotate(90deg);
+        }
+        75% {
+          transform: translateX(200px) translateY(100px) rotate(135deg);
+        }
+        100% {
+          transform: translateX(0) translateY(0) rotate(180deg);
+        }
+      }
+      @keyframes ghost-animation {
+        0% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        30% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        60% {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        70% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+      }
+      @keyframes fairy-animation {
+        0% {
+          transform: scale(1) rotate(0) skewX(0) translateY(0);
+          filter: brightness(100%) saturate(1) contrast(1);
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+        }
+        25% {
+          transform: scale(1.2) rotate(180deg) skewX(10deg) translateY(-20px);
+          filter: brightness(120%) saturate(1.2) contrast(1.2) hue-rotate(90deg);
+          box-shadow: 0 0 10px rgba(235, 232, 255, 0.8);
+        }
+        50% {
+          transform: scale(1) rotate(360deg) skewX(0) translateY(-40px);
+          filter: brightness(150%) saturate(1.5) contrast(1.5) hue-rotate(180deg);
+          box-shadow: 0 0 10px rgba(225, 255, 235, 0.8);
+        }
+        75% {
+          transform: scale(1.2) rotate(540deg) skewX(10deg) translateY(-20px);
+          filter: brightness(120%) saturate(1.2) contrast(1.2) hue-rotate(270deg);
+          box-shadow: 0 0 10px rgba(255, 232, 230, 0.8);
+        }
+        100% {
+          transform: scale(1) rotate(720deg) skewX(0) translateY(0);
+          filter: brightness(100%) saturate(1) contrast(1) hue-rotate(360deg);
+          box-shadow: 0 0 10px rgba(255, 230, 255, 0.8);
+        }
+      }  
+
+      @keyframes steel-animation {
+        0% {
+          transform: scale(1);
+          filter: brightness(100%) saturate(1);
+          background-position: 0 0;
+        }
+        100% {
+          transform: scale(1);
+          filter: brightness(150%) saturate(1.2);
+          background-position: 100% 100%;
+        }
+      }
+
+      @keyframes dark-animation {
+        0% {
+          transform: scale(1);
+          filter: brightness(100%) saturate(1) contrast(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(0.95);
+          filter: brightness(80%) saturate(0.8) contrast(0.8);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(1);
+          filter: brightness(100%) saturate(1) contrast(1);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes psychic-animation {
+        0% {
+          transform: scale(1) rotate(0);
+          filter: brightness(100%) saturate(1) hue-rotate(0deg);
+        }
+        50% {
+          transform: scale(1.1) rotate(180deg);
+          filter: brightness(120%) saturate(1.2) hue-rotate(180deg);
+        }
+        100% {
+          transform: scale(1) rotate(0);
+          filter: brightness(100%) saturate(1) hue-rotate(0deg);
+        }
+      }
+
+
+      @keyframes poison-animation {
+        0% {
+          transform: scale(1);
+          filter: brightness(100%);
+          border-color: transparent;
+          box-shadow: none;
+        }
+        50% {
+          transform: scale(1.05);
+          filter: brightness(120%) saturate(1.2) hue-rotate(-30deg);
+          border-color: #00ff00;
+          box-shadow: 0 0 10px 5px #00ff00;
+        }
+        100% {
+          transform: scale(1);
+          filter: brightness(100%);
+          border-color: transparent;
+          box-shadow: none;
+        }
+      }
+
+      @keyframes dragon-animation {
+        0% {
+          transform: translateY(0) scale(1);
+          filter: brightness(100%) saturate(1);
+          box-shadow: none;
+        }
+        50% {
+          transform: translateY(-5px) scale(1.05);
+          filter: brightness(150%) saturate(2);
+          box-shadow: 0 0 10px 10px rgba(255, 0, 0, 0.5),
+                      0 0 20px 20px rgba(0, 0, 255, 0.5),
+                      0 0 30px 30px rgba(0, 255, 0, 0.5);
+        }
+        100% {
+          transform: translateY(0) scale(1);
+          filter: brightness(100%) saturate(1);
+          box-shadow: none;
+        }
+      }
+
+      @keyframes water-animation {
+        0% {
+          transform: translateY(0);
+          filter: brightness(100%);
+          box-shadow: none;
+        }
+        50% {
+          transform: translateY(-2px) rotate(2deg);
+          filter: brightness(100%) saturate(1.2) hue-rotate(-10deg);
+          box-shadow: 0 0 10px 5px rgba(0, 0, 255, 0.3);
+        }
+        100% {
+          transform: translateY(0);
+          filter: brightness(100%);
+          box-shadow: none;
+        }
+      }
+
+      @keyframes electric-animation {
+        0%, 100% {
+          transform: translateY(0) rotate(0);
+          filter: brightness(100%);
+        }
+        50% {
+          transform: translateY(-2px) rotate(5deg);
+          filter: brightness(120%) hue-rotate(20deg);
+        }
+      }
+
+      @keyframes fire-animation {
+        0% {
+          transform: translateY(0);
+          filter: brightness(100%) saturate(1) hue-rotate(0);
+        }
+        50% {
+          transform: translateY(-2px) rotate(5deg);
+          filter: brightness(120%) saturate(1.5) hue-rotate(30deg);
+        }
+        100% {
+          transform: translateY(0);
+          filter: brightness(100%) saturate(1) hue-rotate(0);
+        }
+      }  
+
+      @keyframes grass-animation {
+        0% {
+          transform: scale(1);
+          filter: brightness(100%);
+          box-shadow: none;
+        }
+        50% {
+          transform: scale(1.1);
+          filter: brightness(100%);
+          box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.7);
+        }
+        100% {
+          transform: scale(1);
+          filter: brightness(100%);
+          box-shadow: none;
+        }
+      }  
+       
+       @keyframes ice-animation {
+        0% {
+          transform: rotate(0);
+        }
+        50% {
+          transform: rotate(5deg) scale(0.95);
+        }
+        100% {
+          transform: rotate(0);
+        }
+      }  
+
+      @keyframes fighting-animation {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(-2px);
+        }
+      }
+
+      @keyframes ground-animation {
+        0% {
+          transform: translateX(0) translateY(0);
+        }
+        50% {
+          transform: translateX(2px) translateY(2px);
+        }
+        100% {
+          transform: translateX(0) translateY(0);
+        }
+      }
+
+      @keyframes bug-animation {
+        0%, 100% {
+          transform: translateX(0) translateY(0);
+        }
+        50% {
+          transform: translateX(2px) translateY(2px);
+        }
+      }
+
+      @keyframes rock-animation {
+        0% {
+          transform: rotate(0);
+        }
+        50% {
+          transform: rotate(-5deg);
+        }
+        100% {
+          transform: rotate(0);
+        }
+      }
+
+      @keyframes evolve-animation {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes mega-animation {
+        0% {
+          opacity: 1;
+          transform: scale(1) rotate(0);
+          filter: brightness(100%);
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+        }
+        25% {
+          opacity: 1;
+          transform: scale(1.1) rotate(15deg);
+          filter: brightness(130%);
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        50% {
+          opacity: 0;
+          transform: scale(0.2) rotate(90deg);
+          filter: brightness(200%);
+          box-shadow: 0 0 50px rgba(255, 255, 255, 0.8);
+        }
+        75% {
+          opacity: 1;
+          transform: scale(1.1) rotate(-15deg);
+          filter: brightness(130%);
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) rotate(0);
+          filter: brightness(100%);
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+        }
+      }
+
+      .type-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      .type-NORMAL {
+        background-color: #A8A77A; /* Normal */
+      }
+      .type-FIRE {
+        background-color: #EE8130; /* Fire */
+      }
+      .type-WATER {
+        background-color: #6390F0; /* Water */
+      }
+      .type-GRASS {
+        background-color: #7AC74C; /* Grass */
+      }
+      .type-ELECTRIC {
+        background-color: #F7D02C; /* Electric */
+      }
+      .type-ICE {
+        background-color: #96D9D6; /* Ice */
+      }
+      .type-FIGHTING {
+        background-color: #C22E28; /* Fighting */
+      }
+      .type-POISON {
+        background-color: #A33EA1; /* Poison */
+      }
+      .type-GROUND {
+        background-color: #E2BF65; /* Ground */
+      }
+      .type-FLYING {
+        background-color: #A98FF3; /* Flying */
+      }
+      .type-PSYCHIC {
+        background-color: #F95587; /* Psychic */
+      }
+      .type-BUG {
+        background-color: #A6B91A; /* Bug */
+      }
+      .type-ROCK {
+        background-color: #B6A136; /* Rock */
+      }
+      .type-GHOST {
+        background-color: #735797; /* Ghost */
+      }
+      .type-DARK {
+        background-color: #705746; /* Dark */
+      }
+      .type-DRAGON {
+        background-color: #6F35FC; /* Dragon */
+      }
+      .type-STEEL {
+        background-color: #B7B7CE; /* Steel */
+      }
+      .type-FAIRY {
+        background-color: #D685AD; /* Fairy */
+      }
+      .type-FRESH {
+        background-color: #7F00FF; /* Fresh */
+      }
+      .type-IN {
+        background-color: #FF00FF; /* In Training */
+      }
+      .type-TRAINING {
+        background-color: #FF00FF; /* In Training */
+      }
+
+      .type-ROOKIE {
+        background-color: #4B7DA9; /* Rookie */
+      }
+      .type-CHAMPION {
+        background-color: #C25858; /* Champion */
+      }
+      .type-ULTIMATE {
+        background-color: #DAA520; /* Ultimate */
+      }
+      .type-ARMOR {
+        background-color: #9F4FAD; /* Armor */
+      }
+      .type-MEGA {
+        background-color: #CC3333; /* Mega */
+      }
+</style>
+
+<table class="creature-table">
+    <tr>
+        <th>Photo</th>
+        <th>Name</th>
+        <th>Traits</th>
+    </tr>
+    {% for creature in creature_list %}
+    <tr>
+        {% if creature.creature_type == "DIGIMON" %}
+        <td data-attribute="{{ creature.digimon.level }}">
+            {% if creature.img_url %}
+            <img src="{{ creature.img_url }}" width="100" height="100">
+            {% else %}
+            No photo available
+            {% endif %}
+        </td>
+        <td>{{ creature.name }}</td>
+        <td>
+            <span class="type-badge type-{{ creature.digimon.level }}">
+            {{ creature.digimon.level }}
+            </span>
+        </td>
+        {% elif creature.creature_type == "POKEMON" %}
+         <td data-attribute="{{ creature.pokemon.type1 }}">
+            {% if creature.img_url %}
+            <img src="{{ creature.img_url }}" width="100" height="100">
+            {% else %}
+            No photo available
+            {% endif %}
+        </td>
+        <td>{{ creature.name }}</td>
+        <td>
+            <span class="type-badge type-{{ creature.pokemon.type1 }}">
+            {{ creature.pokemon.type1 }}
+            </span>
+            {% if creature.pokemon.type2 %}
+            <span class="type-badge type-{{ creature.pokemon.type2 }}">
+            {{ creature.pokemon.type2 }}
+            </span>
+            {% endif %}
+        </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+

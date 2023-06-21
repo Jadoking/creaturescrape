@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ingestion Page</title>
+        <style>
+            body {
+                text-align: center;
+                padding-top: 50px;
+                font-family: Arial, sans-serif;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            .form-container {
+                height: 300px;
+                width: 300px;
+                display: inline-block;
+                text-align: center;
+                padding: 20px;
+                background-color: #f2f2f2;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                position: relative;
+            }
+
+            .form-container h2 {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .form-container button {
+                background-color: #4caf50;
+                color: white;
+                padding: 8px 16px;
+                border-radius: 4px;
+                border: none;
+                cursor: pointer;
+                font-size: 14px;
+                margin-top: 10px;
+            }
+
+            .view-creatures-link {
+                display: block;
+                margin-top: 30px;
+                font-size: 16px;
+                text-decoration: none;
+            }
+
+            .view-creatures-link:hover {
+                text-decoration: underline;
+            }
+
+            .help-icon {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 20px;
+                height: 20px;
+                background-color: #ccc;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 20px;
+                cursor: help;
+            }
+
+            .help-icon:hover {
+                background-color: #999;
+                color: white;
+            }
+
+            .help-text {
+                display: none;
+                position: absolute;
+                top: 30px;
+                right: 0;
+                padding: 10px;
+                background-color: #f9f9f9;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                text-align: left;
+                width: 200px;
+            }
+
+            .form-container:hover .help-text {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>{{ creature_count }} Creatures Scraped</h1>
+
+        <div class="form-container">
+            <form action="{% url 'creatures:ingest_pokemon' %}" method="post">
+                {% csrf_token %}
+                <h2>Pokemon Ingestion</h2>
+                <div>
+                    {{ pokemon_form.as_p }}
+                </div>
+                <button type="submit">Ingest Pokemon</button>
+                <div class="help-icon" title="Explanation">?</div>
+                <div class="help-text">
+                    This ingestion type allows you to ingest Pokemon data.
+                    This button is a full ingestion. It's slow.
+                </div>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <form action="{% url 'creatures:ingest_digimon' %}" method="post">
+                {% csrf_token %}
+                <h2>Digimon Ingestion</h2>
+                <div>
+                    {{ digimon_form.as_p }}
+                </div>
+                <button type="submit">Ingest Digimon</button>
+                <div class="help-icon" title="Explanation">?</div>
+                <div class="help-text">
+                    This ingestion type allows you to ingest Digimon data.
+                </div>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <form action="{% url 'creatures:ingest_pokemon' %}" method="post">
+                {% csrf_token %}
+                <h2>Offset Ingestion</h2>
+                <div>
+                    {{ offset_form.as_p }}
+                </div>
+                <button type="submit">Ingest Offset</button>
+                <div class="help-icon" title="Explanation">?</div>
+                <div class="help-text">
+                    This ingestion type allows you to ingest Pokemon data using offset values.
+                </div>
+            </form>
+        </div>
+
+        <a href="{% url 'creatures:creature_list' %}" class="view-creatures-link">View All Creatures</a>
+
+        <script>
+            var helpIcons = document.getElementsByClassName('help-icon');
+            for (var i = 0; i < helpIcons.length; i++) {
+                helpIcons[i].addEventListener('mouseover', function() {
+                    this.nextElementSibling.style.display = 'block';
+                });
+                helpIcons[i].addEventListener('mouseout', function() {
+                    this.nextElementSibling.style.display = 'none';
+                });
+            }
+        </script>
+    </body>
+</html>
+
