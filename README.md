@@ -1,6 +1,6 @@
 # Creature Data Scraper
 
-This project is a data scraper designed to retrieve information about creatures. It currently supports APIs for Digimon and Pokemon. The project is implemented using Python and the Django Framework, utilizing Python version 3.7.16 and Docker.
+This is an interview project and is a data scraper designed to retrieve information about creatures. It currently supports APIs for Digimon and Pokemon. The project is implemented using Python and the Django Framework, utilizing Python version 3.7.16 and Docker.
 
 ## Installation
 
